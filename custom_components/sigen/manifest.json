@@ -1,0 +1,12 @@
+{
+    "domain": "sigen",
+    "name": "Sigenergy ESS",
+    "codeowners": ["@dragonflyuk"],
+    "config_flow": true,
+    "documentation": "https://github.com/dragonflyuk/sigen-ha-integration",
+    "homeassistant": "2024.1.0",
+    "iot_class": "local_polling",
+    "requirements": ["pymodbus>=3.8.3"],
+    "version": "1.2.0",
+    "quality_scale": "custom"
+}

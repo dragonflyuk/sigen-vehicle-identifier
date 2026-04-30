@@ -1,0 +1,61 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sigenergy ESS Connection",
+        "description": "Enter the Modbus TCP connection details for your Sigenergy system.",
+        "data": {
+          "host": "Host (IP address)",
+          "port": "Modbus TCP port",
+          "slave_id": "Slave / Unit ID",
+          "name": "Plant name",
+          "scan_interval": "Poll interval (seconds)",
+          "read_only": "Read-only mode (disable writes)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to connect — check the IP address and port."
+    },
+    "abort": {
+      "already_configured": "This Sigenergy system is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "menu": {
+        "title": "Sigenergy Options",
+        "data": {
+          "action": "What would you like to do?"
+        }
+      },
+      "settings": {
+        "title": "Connection & Polling Settings",
+        "data": {
+          "scan_interval": "Poll interval (seconds)",
+          "read_only": "Read-only mode"
+        }
+      },
+      "cars": {
+        "title": "Manage Cars",
+        "description": "Current cars:\n{car_list}",
+        "data": {
+          "action": "Action"
+        }
+      },
+      "add_car": {
+        "title": "Add Car",
+        "data": {
+          "name": "Car name",
+          "color": "Colour (hex, e.g. #FF0000)"
+        }
+      },
+      "remove_car": {
+        "title": "Remove Car",
+        "data": {
+          "car": "Select car to remove"
+        }
+      }
+    }
+  }
+}

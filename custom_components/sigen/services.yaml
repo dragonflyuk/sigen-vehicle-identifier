@@ -1,0 +1,30 @@
+confirm_session_car:
+  name: Confirm Session Car
+  description: >
+    Confirm or correct the identified car for the current or most recent
+    DC charger session. Updates prediction accuracy statistics.
+  fields:
+    car_id:
+      name: Car ID
+      description: >
+        Internal car ID (e.g. renault_zoe_2022, mg_zs_ev_2022, geely_ex5_2026,
+        or a custom ID created via the Options flow).
+      required: true
+      example: renault_zoe_2022
+      selector:
+        text:
+    session_id:
+      name: Session ID
+      description: >
+        Optional UUID of a specific session to correct. If omitted, the
+        current or most recent session is used.
+      required: false
+      example: "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+      selector:
+        text:
+
+export_sessions:
+  name: Export Session Log
+  description: >
+    Export all stored DC charger session data to
+    /homeassistant/sigen_sessions_export.json for analysis.
