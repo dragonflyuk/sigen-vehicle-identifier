@@ -2,9 +2,10 @@
 from __future__ import annotations
 
 import logging
+import struct
 from typing import Any
 
-from pymodbus.client import AsyncModbusTcpClient, ModbusClientMixin
+from pymodbus.client import AsyncModbusTcpClient
 from pymodbus.exceptions import ModbusException
 
 from .const import (
@@ -73,16 +74,10 @@ class SigenModbusClient:
 
         regs = result.registers
 
-        # Use pymodbus convert_from_registers for correct endianness handling
-        power_raw = ModbusClientMixin.convert_from_registers(
-            regs[2:4], data_type=ModbusClientMixin.DATATYPE.INT32
-        )
-        capacity_raw = ModbusClientMixin.convert_from_registers(
-            regs[5:7], data_type=ModbusClientMixin.DATATYPE.UINT32
-        )
-        duration_raw = ModbusClientMixin.convert_from_registers(
-            regs[7:9], data_type=ModbusClientMixin.DATATYPE.UINT32
-        )
+        # Decode multi-register values using struct (big-endian, high word first)
+        power_raw = struct.unpack(">i", struct.pack(">HH", regs[2], regs[3]))[0]
+        capacity_raw = struct.unpack(">I", struct.pack(">HH", regs[5], regs[6]))[0]
+        duration_raw = struct.unpack(">I", struct.pack(">HH", regs[7], regs[8]))[0]
 
         return {
             "dc_charger_vehicle_battery_voltage": regs[0] / 10.0,
