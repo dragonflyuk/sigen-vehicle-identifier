@@ -1,4 +1,4 @@
-"""Static sensor entity descriptions for the Sigenergy ESS DC charger."""
+"""Static sensor entity descriptions for the Sigen Vehicle Identifier DC charger."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field

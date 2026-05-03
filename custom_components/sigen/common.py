@@ -1,4 +1,4 @@
-"""Shared helpers for the Sigenergy ESS integration."""
+"""Shared helpers for the Sigen Vehicle Identifier integration."""
 from __future__ import annotations
 
 from homeassistant.helpers.device_registry import DeviceInfo

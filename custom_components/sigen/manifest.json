@@ -1,6 +1,6 @@
 {
     "domain": "sigen",
-    "name": "Sigenergy ESS",
+    "name": "Sigen Vehicle Identifier",
     "codeowners": ["@dragonflyuk"],
     "config_flow": true,
     "documentation": "https://github.com/dragonflyuk/sigen-vehicle-identifier",

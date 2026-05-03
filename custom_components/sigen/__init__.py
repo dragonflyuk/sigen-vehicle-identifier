@@ -1,4 +1,4 @@
-"""Sigenergy ESS — Home Assistant custom integration."""
+"""Sigen Vehicle Identifier — Home Assistant custom integration."""
 from __future__ import annotations
 
 import logging

@@ -1,4 +1,4 @@
-# Sigenergy ESS — Home Assistant Integration
+# Sigen Vehicle Identifier — Home Assistant Integration
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 
@@ -32,7 +32,7 @@ Additional cars can be added via the Options flow.
 ### HACS (recommended)
 
 1. Add `https://github.com/dragonflyuk/sigen-vehicle-identifier` as a custom repository in HACS (category: Integration)
-2. Search for **Sigenergy ESS** and install
+2. Search for **Sigen Vehicle Identifier** and install
 3. Restart Home Assistant
 4. Go to **Settings → Devices & Services → Add Integration** and search for Sigenergy
 
@@ -54,7 +54,7 @@ Enter the Modbus TCP connection details during setup:
 
 ## Car Management
 
-Go to **Settings → Devices & Services → Sigenergy ESS → Configure** to:
+Go to **Settings → Devices & Services → Sigen Vehicle Identifier → Configure** to:
 - View car session counts and prediction accuracy
 - Add a new car (name + colour)
 - Remove a car

@@ -1,4 +1,4 @@
-"""Modbus TCP client for the Sigenergy ESS."""
+"""Modbus TCP client for the Sigen Vehicle Identifier integration."""
 from __future__ import annotations
 
 import logging

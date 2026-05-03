@@ -1,4 +1,4 @@
-"""Base entity for the Sigenergy ESS integration."""
+"""Base entity for the Sigen Vehicle Identifier integration."""
 from __future__ import annotations
 
 from homeassistant.helpers.device_registry import DeviceInfo

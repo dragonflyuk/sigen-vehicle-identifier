@@ -1,4 +1,4 @@
-"""Binary sensor platform for the Sigenergy ESS integration."""
+"""Binary sensor platform for the Sigen Vehicle Identifier integration."""
 from __future__ import annotations
 
 import logging

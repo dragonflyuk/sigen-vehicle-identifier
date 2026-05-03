@@ -1,4 +1,4 @@
-"""Data update coordinator for the Sigenergy ESS integration."""
+"""Data update coordinator for the Sigen Vehicle Identifier integration."""
 from __future__ import annotations
 
 import logging
@@ -20,7 +20,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class SigenergyDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
-    """Polls the Sigenergy ESS and passes DC charger data to the session manager."""
+    """Polls the Sigenergy DC charger and passes data to the session manager."""
 
     def __init__(
         self,

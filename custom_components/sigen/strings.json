@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "Sigenergy ESS Connection",
+        "title": "Sigen Vehicle Identifier — Connection",
         "description": "Enter the Modbus TCP connection details for your Sigenergy system.",
         "data": {
           "host": "Host (IP address)",

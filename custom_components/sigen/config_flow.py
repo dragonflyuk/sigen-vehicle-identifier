@@ -59,7 +59,7 @@ class SigenConfigFlow(ConfigFlow, domain=DOMAIN):
                 errors["base"] = "cannot_connect"
             else:
                 return self.async_create_entry(
-                    title=user_input.get(CONF_NAME, "Sigenergy ESS"),
+                    title=user_input.get(CONF_NAME, "Sigen Vehicle Identifier"),
                     data=user_input,
                 )
 
@@ -68,7 +68,7 @@ class SigenConfigFlow(ConfigFlow, domain=DOMAIN):
                 vol.Required(CONF_HOST): str,
                 vol.Required(CONF_PORT, default=DEFAULT_PORT): vol.All(int, vol.Range(1, 65535)),
                 vol.Required(CONF_SLAVE_ID, default=DEFAULT_SLAVE_ID): vol.All(int, vol.Range(1, 247)),
-                vol.Required(CONF_NAME, default="Sigenergy ESS"): str,
+                vol.Required(CONF_NAME, default="Sigen Vehicle Identifier"): str,
                 vol.Required(CONF_SCAN_INTERVAL, default=DEFAULT_SCAN_INTERVAL): vol.All(int, vol.Range(10, 300)),
                 vol.Required(CONF_READ_ONLY, default=False): bool,
             }

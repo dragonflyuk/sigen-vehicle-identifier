@@ -1,4 +1,4 @@
-"""Diagnostics support for the Sigenergy ESS integration."""
+"""Diagnostics support for the Sigen Vehicle Identifier integration."""
 from __future__ import annotations
 
 from typing import Any
