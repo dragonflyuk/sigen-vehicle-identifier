@@ -1,4 +1,4 @@
-DOMAIN = "sigen"
+DOMAIN = "sigen_vehicle_identifier"
 
 CONF_SLAVE_ID = "slave_id"
 CONF_SCAN_INTERVAL = "scan_interval"
@@ -69,7 +69,7 @@ REG_DC_RUNNING_STATE = 31513
 REG_DC_START_STOP = 41000
 
 # Storage keys
-STORAGE_KEY = "sigen_sessions"
+STORAGE_KEY = "sigen_vehicle_identifier_sessions"
 STORAGE_VERSION = 1
 MAX_SESSIONS = 200
 

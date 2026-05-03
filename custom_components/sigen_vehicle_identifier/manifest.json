@@ -1,5 +1,5 @@
 {
-    "domain": "sigen",
+    "domain": "sigen_vehicle_identifier",
     "name": "Sigen Vehicle Identifier",
     "codeowners": ["@dragonflyuk"],
     "config_flow": true,
