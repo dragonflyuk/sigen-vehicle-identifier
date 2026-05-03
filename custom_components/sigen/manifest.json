@@ -3,7 +3,7 @@
     "name": "Sigenergy ESS",
     "codeowners": ["@dragonflyuk"],
     "config_flow": true,
-    "documentation": "https://github.com/dragonflyuk/sigen-ha-integration",
+    "documentation": "https://github.com/dragonflyuk/sigen-vehicle-identifier",
     "homeassistant": "2024.1.0",
     "iot_class": "local_polling",
     "requirements": ["pymodbus>=3.8.3"],

@@ -31,7 +31,7 @@ Additional cars can be added via the Options flow.
 
 ### HACS (recommended)
 
-1. Add this repository as a custom repository in HACS (category: Integration)
+1. Add `https://github.com/dragonflyuk/sigen-vehicle-identifier` as a custom repository in HACS (category: Integration)
 2. Search for **Sigenergy ESS** and install
 3. Restart Home Assistant
 4. Go to **Settings → Devices & Services → Add Integration** and search for Sigenergy
