@@ -4,18 +4,20 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from pymodbus.client import AsyncModbusTcpClient
+from pymodbus.client import AsyncModbusTcpClient, ModbusClientMixin
 from pymodbus.exceptions import ModbusException
 
 from .const import (
     REG_DC_VOLTAGE,
-    REG_DC_RUNNING_STATE,
     REG_DC_START_STOP,
 )
 
 _LOGGER = logging.getLogger(__name__)
 
-# Number of input registers to read in one burst: 31500–31513 = 14 registers
+# Register addresses are used exactly as documented by Sigenergy (no base offset).
+# Confirmed against the TypQxQ/Sigenergy-Local-Modbus reference implementation.
+
+# Burst read: 31500–31513 inclusive = 14 registers
 _DC_CHARGER_REG_COUNT = 14
 
 
@@ -49,8 +51,8 @@ class SigenModbusClient:
     async def async_read_dc_charger(self) -> dict[str, Any] | None:
         """Read all DC charger input registers.
 
-        Returns None when no EV is connected (Modbus exception from device)
-        or when the connection is unavailable.
+        Returns None when no EV is connected (device raises Modbus exception)
+        or when the TCP connection is unavailable.
         """
         if not self.connected:
             return None
@@ -71,16 +73,16 @@ class SigenModbusClient:
 
         regs = result.registers
 
-        # S32 output power: registers [2] (hi) and [3] (lo)
-        power_raw = (regs[2] << 16) | regs[3]
-        if power_raw >= 0x80000000:
-            power_raw -= 0x100000000
-
-        # U32 charging capacity: registers [5] (hi) and [6] (lo)
-        capacity_raw = (regs[5] << 16) | regs[6]
-
-        # U32 session duration: registers [7] (hi) and [8] (lo)
-        duration_raw = (regs[7] << 16) | regs[8]
+        # Use pymodbus convert_from_registers for correct endianness handling
+        power_raw = ModbusClientMixin.convert_from_registers(
+            regs[2:4], data_type=ModbusClientMixin.DATATYPE.INT32
+        )
+        capacity_raw = ModbusClientMixin.convert_from_registers(
+            regs[5:7], data_type=ModbusClientMixin.DATATYPE.UINT32
+        )
+        duration_raw = ModbusClientMixin.convert_from_registers(
+            regs[7:9], data_type=ModbusClientMixin.DATATYPE.UINT32
+        )
 
         return {
             "dc_charger_vehicle_battery_voltage": regs[0] / 10.0,
@@ -88,8 +90,8 @@ class SigenModbusClient:
             "dc_charger_output_power": power_raw / 1000.0,
             "dc_charger_vehicle_soc": regs[4] / 10.0,
             "dc_charger_current_charging_capacity": capacity_raw / 100.0,
-            "dc_charger_current_charging_duration": duration_raw,
-            # regs[9..12] are reserved/unknown gap registers
+            "dc_charger_current_charging_duration": int(duration_raw),
+            # regs[9..12] are reserved gap registers (not documented)
             "dc_charger_running_state": regs[13],
         }
 
